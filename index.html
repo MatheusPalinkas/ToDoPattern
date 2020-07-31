@@ -11,7 +11,9 @@
 </head>
 <body>
 	<header class="header">
-		<h2>ToDo Pattern</h2>
+		<a href="./index.html">
+			<h2>ToDo Pattern</h2>
+		</a>
 	</header>
 
 	<aside class="aside-filtros">
@@ -36,7 +38,7 @@
 					</span>
 					<ul class="ul-grupos">
 						<li>
-							<a class="add-grupo" href="./pages/newGrupo">
+							<a class="add-grupo" href="./pages/addGrupo.html">
 								<img src="./img/mais.png">
 								Novo grupo
 							</a>
@@ -52,12 +54,14 @@
 
 		<ul class="ul-tarefas">
 			<li>
-				<input type="checkbox" name="" id="" value="Estudar React">
-				<label for="">Estudar React</label>
+				<input type="checkbox" name="task-1" id="task-1" value="Estudar React">
+				<label for="task-1">Estudar React</label>
 			</li>
 			<li class="add-Tarefa">
-				<img src="./img/mais.png">
-				Adicionar nova tarefa
+				<a class="add-grupo" href="./pages/addTarefa.html">
+					<img src="./img/mais.png">
+					Adicionar nova tarefa
+				</a>
 			</li>
 		</ul>
 	</main>

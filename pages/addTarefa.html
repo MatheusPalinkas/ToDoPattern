@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<link href="https://fonts.googleapis.com/css2?family=Numans&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="../css/styles.css">
+	<link rel="stylesheet" href="../css/add.css">
+
+	<title>ToDO Pattern - add tarefa</title>
+</head>
+<body>
+	<header class="header">
+		<a href="../index.html">
+			<h2>ToDo Pattern</h2>
+		</a>
+	</header>
+
+	<aside class="aside-filtros">
+		<nav>
+			<ul class="ul-filtros">
+				<li>
+					<img src="../img/todas.png"></img>
+					Todas
+				</li>
+				<li>
+					<img src="../img/hoje.png"></img>
+					Hoje
+				</li>
+				<li>
+					<img src="../img/completas.png"></img>
+					Completos
+				</li>
+				<li class="li-grupos">
+					<span class="span-grupos">
+						<img src="../img/grupos.png"></img>
+						Grupos
+					</span>
+					<ul class="ul-grupos">
+						<li>
+							<a class="add-grupo" href="../pages/addGrupo.html">
+								<img src="../img/mais.png">
+								Novo grupo
+							</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</nav>
+	</aside>
+
+	<main>
+		<h1 id="cabecalho">Adicionar tarefa</h1>
+
+		<form class="form-grupo">
+			<div class="input-inline">
+				<label for="nome-tarefa">Nome do grupo</label>
+				<input type="text" id="nome-tarefa">
+			</div>
+			<div class="input-inline">
+				<label for="date-tarefa">Data de encerramento</label>
+				<input type="date" id="date-tarefa">
+			</div>
+			<div class="input-inline">
+				<label for="select-grupo">Selecione o grupo</label>
+				<select id="select-grupo">
+					<option value="selecione">Selecione</option>
+					<option value="faculdade">Faculdade</option>
+					<option value="trabalho">Trabalho</option>
+				</select>
+			</div>
+			<button type="submit">Adicionar</button>
+		</form>
+	</main>
+</body>
+</html>

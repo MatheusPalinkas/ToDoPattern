@@ -7,6 +7,7 @@
 }
 body{
     display: grid;
+    font-family: 'Numans';
   grid-template-areas:
     'header header'
     'aside main';
@@ -15,17 +16,19 @@ body{
     grid-template-rows: 60px auto;
     grid-template-columns: 1fr 4fr;
 }
-
+a{
+    text-decoration: none;
+}
 /* Header da aplicação */
 header.header{
     background: #A1B0C0;
     padding: 15px 40px;
     grid-area: header;
 }
-header.header > h2{
+header.header  h2{
     color: #FFF;
     font-size: 2em;
-    font-family: 'Numans', sans-serif;
+
 }
 
 /* Filtros */
@@ -40,7 +43,6 @@ aside.aside-filtros{
 }
 .ul-filtros > li,
 .span-grupos{
-    font-family: 'Numans', sans-serif;
     font-size: 1em;
     color: #37404D;
     line-height: 2em;
@@ -67,8 +69,7 @@ aside.aside-filtros{
     margin-left: 20px;
 }
 .add-grupo{
-    font-family: 'Numans', sans-serif;
-    font-size: 0.8em;
+    font-size: 1em;
     color: #2A7AE4;
     text-decoration: none;
     font-weight: bold;
@@ -92,8 +93,7 @@ main{
     padding: 30px 0 0 30px;
 }
 #cabecalho{
-    font-family: 'Numans', sans-serif;
-    font-size: 3em;
+    font-size: 2em;
     color: #2A7AE4;
 }
 #cabecalho::after{
@@ -109,14 +109,18 @@ main{
     list-style: none;
 }
 .ul-tarefas > li{
-    font-family: 'Numans', sans-serif;
-    font-size: 1.25em;
+    font-size: 1em;
     color: #37404D;
     line-height: 2em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+.ul-tarefas > li > label{
+    cursor: pointer;
 }
 li.add-Tarefa{
-    font-family: 'Numans', sans-serif;
-    font-size: 1em;
+    font-size: .8em;
     color: #2A7AE4;
     text-decoration: none;
     font-weight: bold;
@@ -126,4 +130,21 @@ li.add-Tarefa{
 }
 .add-Tarefa:hover{
     text-decoration: underline;
+}
+
+/* Checkboxs custom */
+input[type="checkbox"]{
+    color: #FF8C2A;
+    box-shadow: none;
+    -webkit-appearance: none;
+    width: 1.3em;
+    height: 1.3em;
+    border-radius: 50%;
+    border: 3px solid currentColor;
+    box-sizing: border-box;
+    margin-right: 5px;
+    transition: ease-in background .1s;
+}
+input[type="checkbox"]:checked{
+    background: currentColor;
 }

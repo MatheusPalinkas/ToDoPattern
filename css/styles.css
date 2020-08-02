@@ -68,6 +68,23 @@ aside.aside-filtros{
 .ul-grupos{
     margin-left: 20px;
 }
+.ul-grupos > li{
+    display: flex;
+    align-items: center;
+}
+.ul-grupos > li::before{
+    content: '';
+    display: block;
+    width: .8em;
+    height: .8em;
+    border-radius: 50%;
+    background: #2A7AE4;
+    margin-right: 5px;
+}
+li.li-add-grupo::before{
+    content: '';
+    background: url(../img/mais.png) center;
+}
 .add-grupo{
     font-size: 1em;
     color: #2A7AE4;
@@ -120,7 +137,7 @@ main{
     cursor: pointer;
 }
 li.add-Tarefa{
-    font-size: .8em;
+    font-size: 1em;
     color: #2A7AE4;
     text-decoration: none;
     font-weight: bold;

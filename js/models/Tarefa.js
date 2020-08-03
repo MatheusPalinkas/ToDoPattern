@@ -1,8 +1,9 @@
 class Tarefa {
-  constructor(idGrupo, dataFinal = new Date(), nome) {
+  constructor(idGrupo, dataFinal = new Date(), nome, key) {
     this._dataFinal = new Date(dataFinal.getTime());
     this._nome = nome;
     this._idGrupo = idGrupo;
+    this._key = key;
   }
 
   get nome() {
@@ -15,6 +16,10 @@ class Tarefa {
 
   get idGrupo() {
     return this._idGrupo;
+  }
+
+  get key() {
+    return this._key;
   }
 
   equals(tarefa) {

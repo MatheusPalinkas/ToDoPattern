@@ -1,7 +1,8 @@
 class Grupo {
-  constructor(color, nome) {
+  constructor(nome, color, key) {
     this._nome = nome;
     this._color = color;
+    this._key = key;
   }
 
   get nome() {
@@ -10,6 +11,10 @@ class Grupo {
 
   get color() {
     return this._color;
+  }
+
+  get key() {
+    return this._key;
   }
 
   equals(grupo) {

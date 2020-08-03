@@ -15,9 +15,8 @@ class GrupoView extends View {
 
   _linkAddGrupo() {
     return `
-      <li>
+      <li class="li-add-grupo">
         <a class="add-grupo" href="./pages/addGrupo.html">
-          <img src="./img/mais.png">
           Novo grupo
         </a>
       </li>

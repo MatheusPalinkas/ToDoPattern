@@ -20,20 +20,21 @@ class GrupoDao {
     return new Promise((resolve, reject) => {
       let cursor = this._getStore().openCursor();
 
-      let tarefas = [];
+      let grupos = [];
       cursor.onsuccess = (e) => {
         let atual = e.target.result;
         if (atual) {
           let dado = atual.value;
-          tarefas.push(dado);
+          let key = atual.key;
+          grupos.push(new Grupo(dado._nome, dado._color, key));
           atual.continue();
         } else {
-          resolve(tarefas);
+          resolve(grupos);
         }
       };
       cursor.onerror = (e) => {
         console.log(e.target.error);
-        reject("Não foi possivel listar as tarefas");
+        reject("Não foi possivel listar os grupos");
       };
     });
   }
@@ -44,7 +45,7 @@ class GrupoDao {
       request.onsuccess = (e) => resolve();
       request.onerror = (e) => {
         console.log(e.target.error);
-        reject("Não foi possivel apagar as tarefas");
+        reject("Não foi possivel apagar as as tarefas");
       };
     });
   }

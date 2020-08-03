@@ -1,0 +1,15 @@
+class GrupoController {
+  constructor() {
+    this._ulGrupos = document.querySelector(".ul-grupos");
+
+    this._grupoView = new GrupoView(this._ulGrupos);
+    this._grupoService = new GrupoService();
+    this._init();
+  }
+
+  _init() {
+    this._grupoService
+      .listar()
+      .then((listaGrupos) => this._grupoView.update(listaGrupos));
+  }
+}

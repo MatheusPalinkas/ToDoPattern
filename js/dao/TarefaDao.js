@@ -25,7 +25,10 @@ class TarefaDao {
         let atual = e.target.result;
         if (atual) {
           let dado = atual.value;
-          console.log(dado);
+          let key = atual.key;
+          grupos.push(
+            new Tarefa(dado._idGrupo, dado._dataFinal, dado._nome, key)
+          );
           atual.continue();
         } else {
           resolve(tarefas);
@@ -44,7 +47,7 @@ class TarefaDao {
       request.onsuccess = (e) => resolve();
       request.onerror = (e) => {
         console.log(e.target.error);
-        reject("Não foi possivel apagar as tarefas");
+        reject("Não foi possivel apagar as negociações");
       };
     });
   }

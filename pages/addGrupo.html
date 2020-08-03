@@ -56,14 +56,55 @@
 		<form class="form-grupo">
 			<div class="input-inline">
 				<label for="nome-grupo">Nome do grupo</label>
-				<input type="text" id="nome-grupo">
+				<input type="text" id="nome-grupo" required/>
 			</div>
 			<div class="input-inline">
 				<label for="cor-grupo">Escolha uma cor</label>
-				<input type="color" id="cor-grupo" value="#2A7AE4">
+				<input type="color" id="cor-grupo" required value="#2A7AE4"/>
 			</div>
 			<button type="submit">Adicionar</button>
 		</form>
 	</main>
+
+	<!--Models-->
+	<script src="../js/models/Grupo.js"></script>
+	<script src="../js/models/Tarefa.js"></script>
+	<script src="../js/models/ListaGrupo.js"></script>
+	<script src="../js/models/ListaTarefa.js"></script>
+
+	<!--Daos-->
+	<script src="../js/dao/GrupoDao.js"></script>
+	<script src="../js/dao/TarefaDao.js"></script>
+
+	<!--Services-->
+	<script src="../js/services/ConnectionFactory.js"></script>
+	<script src="../js/services/GrupoService.js"></script>	
+
+	<!--View-->
+	<script src="../js/views/View.js"></script>
+	<script src="../js/views/GrupoView.js"></script>
+	<script src="../js/views/TarefaView.js"></script>
+
+	<!--Controllers-->
+	<script src="../js/controller/TarefaController.js"></script>
+	<script src="../js/controller/GrupoController.js"></script>
+
+	<script>
+		const tarefaController = new TarefaController();
+		const grupoController = new GrupoController();
+
+		const formGrupo = document.querySelector('.form-grupo');
+
+		formGrupo.addEventListener('submit', (e) => {
+			e.preventDefault();
+			
+			const nome = document.querySelector("#nome-grupo");
+			const cor = document.querySelector("#cor-grupo");
+
+			const grupo = new Grupo(nome.value, cor.value);
+			grupoController.adicionar(grupo);
+		});
+
+	</script>
 </body>
 </html>

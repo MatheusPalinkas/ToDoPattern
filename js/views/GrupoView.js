@@ -4,10 +4,9 @@ class GrupoView extends View {
       grupos
         .map(
           (grupo) => `
-          <li>           
-            ${grupo._nome}</label>
-          </li>
-      `
+          <li style="color: ${grupo._color};">           
+            <span>${grupo._nome}</span>
+          </li>`
         )
         .join("") + this._linkAddGrupo()
     );

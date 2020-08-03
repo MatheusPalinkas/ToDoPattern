@@ -78,8 +78,11 @@ aside.aside-filtros{
     width: .8em;
     height: .8em;
     border-radius: 50%;
-    background: #2A7AE4;
+    background: currentColor;
     margin-right: 5px;
+}
+.ul-grupos > li > span{
+    color: #37404D;
 }
 li.li-add-grupo::before{
     content: '';

@@ -9,6 +9,10 @@ class GrupoService {
       );
   }
 
+  adicionar(grupo) {
+    return this._getGrupoDao().then((dao) => dao.adiciona(grupo));
+  }
+
   _getGrupoDao() {
     return ConnectionFactory.getConnection().then(
       (connection) => new GrupoDao(connection)

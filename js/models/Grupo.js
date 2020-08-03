@@ -1,5 +1,5 @@
 class Grupo {
-  constructor(nome, color, key) {
+  constructor(nome, color, key = null) {
     this._nome = nome;
     this._color = color;
     this._key = key;

@@ -12,4 +12,11 @@ class GrupoController {
       .listar()
       .then((listaGrupos) => this._grupoView.update(listaGrupos));
   }
+
+  adicionar(grupo) {
+    this._grupoService
+      .adicionar(grupo)
+      .then((res) => alert(res))
+      .catch((erro) => alert(erro));
+  }
 }

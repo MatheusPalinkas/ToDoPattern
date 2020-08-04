@@ -5,15 +5,15 @@ class TarefaService {
     return this._getTarefaoDao()
       .then((dao) => dao.listar())
       .then((tarefas) =>
-        tarefas.map((tarefa) => {
-          console.log("service", tarefa);
-          return new Tarefa(
-            tarefa.idGrupo,
-            tarefa.dataFinal,
-            tarefa.nome,
-            tarefa.key
-          );
-        })
+        tarefas.map(
+          (tarefa) =>
+            new Tarefa(
+              tarefa.idGrupo,
+              tarefa.dataFinal,
+              tarefa.nome,
+              tarefa.key
+            )
+        )
       );
   }
 

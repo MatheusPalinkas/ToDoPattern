@@ -26,7 +26,7 @@ class TarefaDao {
         if (atual) {
           let dado = atual.value;
           let key = atual.key;
-          grupos.push(
+          tarefas.push(
             new Tarefa(dado._idGrupo, dado._dataFinal, dado._nome, key)
           );
           atual.continue();

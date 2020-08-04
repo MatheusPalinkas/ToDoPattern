@@ -1,4 +1,5 @@
-.form-grupo{
+.form-grupo,
+.form-tarefa{
     margin-top: 30px;
     max-width: 500px;
     width: 100%;
@@ -31,6 +32,7 @@
     background: none;
 }
 .form-grupo > button[type="submit"],
+.form-tarefa > button[type="submit"],
 .btn-escolher{
     font-size: 1.2em;
     text-transform: uppercase;

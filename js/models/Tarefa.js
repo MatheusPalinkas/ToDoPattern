@@ -1,5 +1,5 @@
 class Tarefa {
-  constructor(idGrupo, dataFinal = new Date(), nome, key) {
+  constructor(idGrupo, dataFinal = new Date(), nome, key = null) {
     this._dataFinal = new Date(dataFinal.getTime());
     this._nome = nome;
     this._idGrupo = idGrupo;

@@ -1,3 +1,6 @@
+import GrupoService from "../services/GrupoService";
+import GrupoView from "../views/GrupoView";
+
 export default class GrupoController {
   constructor() {
     this._ulGrupos = document.querySelector(".ul-grupos");

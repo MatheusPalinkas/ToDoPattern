@@ -1,3 +1,5 @@
+import View from "./View.js";
+
 export default class GrupoView extends View {
   template(grupos) {
     return (

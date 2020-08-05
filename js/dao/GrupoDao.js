@@ -1,6 +1,6 @@
 import Grupo from "../models/Grupo.js";
 
-class GrupoDao {
+export default class GrupoDao {
   constructor(connection) {
     this._connection = connection;
     this._store = "grupos";

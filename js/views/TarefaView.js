@@ -1,3 +1,5 @@
+import View from "./View.js";
+
 export default class TarefaView extends View {
   template(tarefas) {
     return (

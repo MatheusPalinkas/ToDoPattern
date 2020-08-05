@@ -1,4 +1,4 @@
-class SelectGrupoView extends View {
+export default class SelectGrupoView extends View {
   template(grupos) {
     return grupos
       .map((grupo) => `<option value="${grupo.key}">${grupo.nome}</option>`)

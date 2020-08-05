@@ -4,7 +4,7 @@ const stores = ["tarefas", "grupos"];
 
 let connection = null;
 let close = null;
-class ConnectionFactory {
+export default class ConnectionFactory {
   constructor() {
     throw new Error("Não é possivel criar instancia de ConnectionFactory");
   }

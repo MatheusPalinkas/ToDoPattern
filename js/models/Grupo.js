@@ -1,4 +1,4 @@
-class Grupo {
+export default class Grupo {
   constructor(nome, color, key = null) {
     this._nome = nome;
     this._color = color;

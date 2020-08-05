@@ -1,4 +1,8 @@
-class TarefaService {
+import ConnectionFactory from "./ConnectionFactory.js";
+import TarefaDao from "../dao/TarefaDao.js";
+import Tarefa from "../models/Tarefa.js";
+
+export default class TarefaService {
   constructor() {}
 
   listar() {

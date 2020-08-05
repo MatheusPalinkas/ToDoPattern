@@ -1,4 +1,4 @@
-class GrupoController {
+export default class GrupoController {
   constructor() {
     this._ulGrupos = document.querySelector(".ul-grupos");
 

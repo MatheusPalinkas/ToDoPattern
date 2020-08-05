@@ -1,4 +1,6 @@
-class TarefaController {
+import TarefaService from "../services/TarefaService.js";
+import TarefaView from "../views/TarefaView.js";
+export default class TarefaController {
   constructor() {
     this._ulTarefas = document.querySelector(".ul-tarefas");
 

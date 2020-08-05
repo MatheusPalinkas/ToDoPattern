@@ -1,4 +1,4 @@
-class TarefaView extends View {
+export default class TarefaView extends View {
   template(tarefas) {
     return (
       tarefas

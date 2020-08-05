@@ -1,3 +1,5 @@
+import Grupo from "../models/Grupo.js";
+
 class GrupoDao {
   constructor(connection) {
     this._connection = connection;

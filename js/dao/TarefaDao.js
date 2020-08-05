@@ -1,4 +1,6 @@
-class TarefaDao {
+import Tarefa from "../models/Tarefa.js";
+
+export default class TarefaDao {
   constructor(connection) {
     this._connection = connection;
     this._store = "tarefas";

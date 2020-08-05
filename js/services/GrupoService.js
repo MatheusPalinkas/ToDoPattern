@@ -1,4 +1,8 @@
-class GrupoService {
+import ConnectionFactory from "./ConnectionFactory.js";
+import GrupoDao from "../dao/GrupoDao.js";
+import Grupo from "../models/Grupo.js";
+
+export default class GrupoService {
   constructor() {}
 
   listar() {

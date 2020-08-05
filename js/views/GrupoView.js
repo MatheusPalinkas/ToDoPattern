@@ -1,4 +1,4 @@
-class GrupoView extends View {
+export default class GrupoView extends View {
   template(grupos) {
     return (
       grupos

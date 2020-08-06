@@ -1,8 +1,3 @@
-import TarefaController from "./controller/TarefaController";
-import GrupoController from "./controller/GrupoController";
+import navigation from "./router";
 
-import "../css/styles.css";
-import "../css/add.css";
-
-const tarefaController = new TarefaController();
-const grupoController = new GrupoController();
+navigation(window.location.pathname);

@@ -1,5 +1,6 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const plugins = [
   new HtmlWebpackPlugin({
@@ -12,12 +13,24 @@ const plugins = [
     template: "./index.html",
     filename: "index.html",
   }),
+  new MiniCssExtractPlugin({
+    filename: "styles.css",
+    chunkFilename: "[id].css",
+  }),
 ];
 
 const rules = [
   {
     test: /\.css$/,
-    use: ["style-loader", "css-loader"],
+    use: [
+      {
+        loader: MiniCssExtractPlugin.loader,
+        options: {
+          publicPath: "/public/path/to/",
+        },
+      },
+      "css-loader",
+    ],
   },
   {
     test: /\.html$/,

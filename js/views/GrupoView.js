@@ -17,7 +17,7 @@ export default class GrupoView extends View {
   _linkAddGrupo() {
     return `
       <li class="li-add-grupo">
-        <a class="add-grupo" href="./pages/addGrupo.html">
+        <a class="add-grupo" onclick="navigation('/criar/grupo')">
           Novo grupo
         </a>
       </li>

@@ -1,7 +1,8 @@
+import AddGrupoPageFactory from "../pages/AddGrupoPageFactory";
 import GrupoService from "../services/GrupoService";
 import GrupoView from "../views/GrupoView";
-
-export default class GrupoController {
+import Grupo from "../models/Grupo";
+class GrupoController {
   constructor() {
     this._ulGrupos = document.querySelector(".ul-grupos");
 
@@ -16,10 +17,28 @@ export default class GrupoController {
       .then((listaGrupos) => this._grupoView.update(listaGrupos));
   }
 
-  adicionar(grupo) {
+  adicionar() {
+    const grupo = this._createGrupo();
     this._grupoService
       .adicionar(grupo)
       .then((res) => alert(res))
       .catch((erro) => alert(erro));
   }
+
+  pageAddGrupo() {
+    return AddGrupoPageFactory.render();
+  }
+
+  _createGrupo() {
+    return new Grupo(
+      this._form.querySelector("#nome-grupo").value,
+      this._form.querySelector("#cor-grupo")
+    );
+  }
+}
+
+let grupoController = new GrupoController();
+
+export default function getInstanceGrupo() {
+  return grupoController;
 }

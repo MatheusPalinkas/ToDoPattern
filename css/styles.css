@@ -84,9 +84,20 @@ aside.aside-filtros{
 .ul-grupos > li > span{
     color: #37404D;
 }
-li.li-add-grupo::before{
+li.li-add-grupo{
+    position: relative;
+}
+li.li-add-grupo::before,
+li.li-add-grupo::after{
     content: '';
-    background: url(../img/mais.png) center;
+    width: .8em;
+    height: 2px;
+    background: #2A7AE4;
+    border-radius: 0;
+    position: absolute;
+}
+li.li-add-grupo::after{
+    transform: rotate(90deg);
 }
 .add-grupo{
     font-size: 1em;
@@ -95,6 +106,7 @@ li.li-add-grupo::before{
     font-weight: bold;
     display: flex;
     flex-direction: row;
+    padding-left: 1em;
     align-items: center
 }
 .add-grupo:hover{

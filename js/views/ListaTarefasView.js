@@ -1,6 +1,4 @@
-import View from "./View.js";
-
-export default class TarefaView extends View {
+export default class ListaTarefasView {
   template(tarefas) {
     return (
       tarefas
@@ -23,7 +21,7 @@ export default class TarefaView extends View {
   _linkAddTarefa() {
     return `
       <li class="add-Tarefa">
-        <a class="add-grupo" href="./pages/addTarefa.html">
+        <a class="add-grupo" style="padding-left: 0" onclick="navigation('/criar/tarefa')">
           <img src="./img/mais.png">
           Adicionar nova tarefa
         </a>

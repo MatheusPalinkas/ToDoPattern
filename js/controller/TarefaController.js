@@ -1,19 +1,20 @@
-import AddTarefaPageFactory from "../pages/AddTarefaPageFactory";
+import ListaTarefasView from "../views/ListaTarefasView";
 import TarefaService from "../services/TarefaService";
-import TarefaView from "../views/TarefaView";
+import DateHelper from '../helpers/DateHelper';
+import Tarefa from '../models/Tarefa';
 
 class TarefaController {
   constructor() {
     this._ulTarefas = document.querySelector(".ul-tarefas");
 
     this._tarefaService = new TarefaService();
-    this._tarefaView = new TarefaView(this._ulTarefas);
+    this._listaTarefasView = new ListaTarefasView();
 
     this.listar();
   }
 
-  adicionar() {
-    const tarefa = this._createTarefa();
+  adicionar(form) {
+    const tarefa = this._createTarefa(form);
     this._tarefaService
       .adicionar(tarefa)
       .then((res) => alert(res))
@@ -21,28 +22,17 @@ class TarefaController {
   }
 
   listar() {
-    this._tarefaService
+    return this._tarefaService
       .listar()
-      .then((tarefas) => this._tarefaView.update(tarefas))
-      .catch((erro) => alert(erro));
+      .then((tarefas) => this._listaTarefasView.template(tarefas))
+      .catch((erro) => {
+        alert(erro);
+        return "";
+      });
   }
 
-  pageAddTarefa() {
-    return AddTarefaPageFactory.render((select) => {
-      this._initSelectGrupo(select).bind(this);
-    });
-  }
-
-  _initSelectGrupo(elemento) {
-    const selectGrupoView = new SelectGrupoView(elemento);
-    console.log(selectGrupoView);
-    new GrupoService()
-      .listar()
-      .then((listaGrupos) => selectGrupoView.update(listaGrupos));
-  }
-
-  _createTarefa() {
-    const getElement = this._formTarefa.querySelector.bind(this._formTarefa);
+  _createTarefa(form) {
+    const getElement = form.querySelector.bind(form);
 
     return new Tarefa(
       getElement("#select-grupo").value,

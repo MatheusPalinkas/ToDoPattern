@@ -1,4 +1,4 @@
-import AddGrupoPageFactory from "../pages/AddGrupoPageFactory";
+import SelectGrupoView from "../views/SelectGrupoView";
 import GrupoService from "../services/GrupoService";
 import GrupoView from "../views/GrupoView";
 import Grupo from "../models/Grupo";
@@ -17,22 +17,25 @@ class GrupoController {
       .then((listaGrupos) => this._grupoView.update(listaGrupos));
   }
 
-  adicionar() {
-    const grupo = this._createGrupo();
+  adicionar(form) {
+    const grupo = this._createGrupo(form);
+    console.log(grupo);
     this._grupoService
       .adicionar(grupo)
       .then((res) => alert(res))
       .catch((erro) => alert(erro));
   }
 
-  pageAddGrupo() {
-    return AddGrupoPageFactory.render();
+  selectGrupos() {
+    return this._grupoService
+      .listar()
+      .then((grupos) => new SelectGrupoView().template(grupos));
   }
 
-  _createGrupo() {
+  _createGrupo(form) {
     return new Grupo(
-      this._form.querySelector("#nome-grupo").value,
-      this._form.querySelector("#cor-grupo")
+      form.querySelector("#nome-grupo").value,
+      form.querySelector("#cor-grupo").value
     );
   }
 }

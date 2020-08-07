@@ -1,30 +1,45 @@
-import getInstanceTarefa from "./controller/TarefaController";
-import getInstanceGrupo from "./controller/GrupoController";
+import ListaTarefasPageFactory from "./pages/ListaTarefasPageFactory";
+import AddTarefaPageFactory from "./pages/AddTarefaPageFactory";
+import AddGrupoPageFactory from "./pages/AddGrupoPageFactory";
 
 import "../css/styles.css";
 import "../css/add.css";
 
-const routes = {
-  "/": getInstanceTarefa().pageAddTarefa,
-  "/criar/grupo": getInstanceGrupo().pageAddGrupo,
-  "/criar/tarefa": getInstanceTarefa().pageAddTarefa,
-};
+class Router {
+  constructor() {
+    this._rootDiv = document.querySelector("#root");
+    this._routes = {
+      "/": ListaTarefasPageFactory.render,
+      "/criar/tarefa": AddTarefaPageFactory.render,
+      "/criar/grupo": AddGrupoPageFactory.render,
+    };
+  }
 
-const rootDiv = document.querySelector("#root");
+  _returnPage(func) {
+    func()
+      .then(pageContent => this._rootDiv.appendChild(pageContent))
+      .catch(erro => {
+        console.log(erro);
+        this._rootDiv.appendChild("");
+      });
+  }
 
-const navigation = (pathname) => {
-  window.history.pushState({}, pathname, window.location.origin + pathname);
-  rootDiv.innerHTML = "";
-  const iniciarRota = routes[window.location.pathname];
+  navigation(pathname) {
+    window.history.pushState({}, pathname, window.location.origin + pathname);
+    this._rootDiv.innerHTML = "";
+    this._returnPage(this._routes[window.location.pathname])
+  };
 
-  rootDiv.appendChild(iniciarRota());
-};
+  undoNavigation() {
+    this._rootDiv.innerHTML = "";
+    this._returnPage(this._routes[window.location.pathname])
+  };
+}
 
-window.navigation = navigation;
+const router = new Router();
 
-window.onpopstate = () => {
-  rootDiv.innerHTML = "";
-  rootDiv.appendChild(routes[window.location.pathname]());
-};
+window.navigation = router.navigation.bind(router);
+
+window.onpopstate = router.undoNavigation.bind(router);
 
 export default navigation;

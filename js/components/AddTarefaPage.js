@@ -1,22 +1,23 @@
-import PageFactory from "./PageFactory";
+import Page from "./Page";
 import getInstanceGrupo from "../controller/GrupoController";
 import getInstanceTarefa from "../controller/TarefaController";
 
 const grupoController = getInstanceGrupo();
 const tarefaController = getInstanceTarefa();
-export default class AddTarefaPageFactory extends PageFactory {
-	static render() {
+export default class AddTarefaPage extends Page {
+  static render() {
+    return grupoController
+      .selectGrupos()
+      .then((selectGrupos) => AddTarefaPage._createFormTarefa(selectGrupos))
+      .catch((erro) =>
+        AddTarefaPage._createFormTarefa('<select id="select-grupo"></select>')
+      );
+  }
 
-		return grupoController
-			.selectGrupos()
-			.then(selectGrupos => AddTarefaPageFactory._createFormTarefa(selectGrupos))
-			.catch((erro) => AddTarefaPageFactory._createFormTarefa('<select id="select-grupo"></select>'));
-	}
+  static _createFormTarefa(selectGrupos) {
+    const divContent = document.createElement("div");
 
-	static _createFormTarefa(selectGrupos) {
-		const divContent = document.createElement("div");
-
-		divContent.innerHTML = `
+    divContent.innerHTML = `
 		<h1 id="cabecalho">Adicionar tarefa</h1>
 
 		<form class="form-tarefa">
@@ -35,12 +36,11 @@ export default class AddTarefaPageFactory extends PageFactory {
 			<button type="submit">Adicionar</button>
 		</form>`;
 
-
-		const form = divContent.querySelector('.form-tarefa');
-		form.addEventListener('submit', (e) => {
-			e.preventDefault();
-			tarefaController.adicionar(form);
-		});
-		return divContent;
-	}
+    const form = divContent.querySelector(".form-tarefa");
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      tarefaController.adicionar(form);
+    });
+    return divContent;
+  }
 }

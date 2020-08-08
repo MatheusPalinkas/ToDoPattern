@@ -1,49 +1,24 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Numans&display=swap"
+      rel="stylesheet"
+    />
+    <title>ToDO Pattern</title>
+  </head>
 
-	<link href="https://fonts.googleapis.com/css2?family=Numans&display=swap" rel="stylesheet">
-	<title>ToDO Pattern</title>
-</head>
+  <body>
+    <header class="header">
+      <a onClick="navigation('/')">
+        <h2>ToDo Pattern</h2>
+      </a>
+    </header>
 
-<body>
-	<header class="header">
-		<a onClick="navigation('/')">
-			<h2>ToDo Pattern</h2>
-		</a>
-	</header>
-
-	<aside class="aside-filtros">
-		<nav>
-			<ul class="ul-filtros">
-				<li>
-					<img src="./img/todas.png"></img>
-					Todas
-				</li>
-				<li>
-					<img src="./img/hoje.png"></img>
-					Hoje
-				</li>
-				<li>
-					<img src="./img/completas.png"></img>
-					Completos
-				</li>
-				<li class="li-grupos">
-					<span class="span-grupos">
-						<img src="./img/grupos.png"></img>
-						Grupos
-					</span>
-					<ul class="ul-grupos"></ul>
-				</li>
-			</ul>
-		</nav>
-	</aside>
-
-	<main id="root">
-	</main>
-</body>
-
+    <aside class="aside-filtros"></aside>
+    <main id="root"></main>
+  </body>
 </html>

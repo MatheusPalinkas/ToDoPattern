@@ -1,8 +1,6 @@
-import View from "./View.js";
-
-export default class GrupoView extends View {
+export default class ListaGruposView {
   template(grupos) {
-    return (
+    return `<ul class="ul-grupos">${
       grupos
         .map(
           (grupo) => `
@@ -11,7 +9,7 @@ export default class GrupoView extends View {
           </li>`
         )
         .join("") + this._linkAddGrupo()
-    );
+    }</ul>`;
   }
 
   _linkAddGrupo() {

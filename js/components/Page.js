@@ -1,4 +1,4 @@
-export default class PageFactory {
+export default class Page {
   constructor() {
     throw new Error("Essa classe não deve ser instanciada");
   }

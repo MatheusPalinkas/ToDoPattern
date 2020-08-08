@@ -1,6 +1,7 @@
-import ListaTarefasPageFactory from "./pages/ListaTarefasPageFactory";
-import AddTarefaPageFactory from "./pages/AddTarefaPageFactory";
-import AddGrupoPageFactory from "./pages/AddGrupoPageFactory";
+import ListaTarefasPageFactory from "./components/ListaTarefasPage";
+import AddTarefaPageFactory from "./components/AddTarefaPage";
+import AddGrupoPageFactory from "./components/AddGrupoPage";
+import FiltrosAside from "./components/FiltrosAside";
 
 import "../css/styles.css";
 import "../css/add.css";
@@ -8,17 +9,29 @@ import "../css/add.css";
 class Router {
   constructor() {
     this._rootDiv = document.querySelector("#root");
+    this._asideFiltro = document.querySelector(".aside-filtros");
     this._routes = {
       "/": ListaTarefasPageFactory.render,
       "/criar/tarefa": AddTarefaPageFactory.render,
       "/criar/grupo": AddGrupoPageFactory.render,
     };
+
+    this._renderFiltros();
+  }
+
+  _renderFiltros() {
+    FiltrosAside.render()
+      .then((pageContent) => (this._asideFiltro.innerHTML = pageContent))
+      .catch((erro) => {
+        console.log(erro);
+        this._asideFiltro.innerHTML = "";
+      });
   }
 
   _returnPage(func) {
     func()
-      .then(pageContent => this._rootDiv.appendChild(pageContent))
-      .catch(erro => {
+      .then((pageContent) => this._rootDiv.appendChild(pageContent))
+      .catch((erro) => {
         console.log(erro);
         this._rootDiv.appendChild("");
       });
@@ -27,13 +40,13 @@ class Router {
   navigation(pathname) {
     window.history.pushState({}, pathname, window.location.origin + pathname);
     this._rootDiv.innerHTML = "";
-    this._returnPage(this._routes[window.location.pathname])
-  };
+    this._returnPage(this._routes[window.location.pathname]);
+  }
 
   undoNavigation() {
     this._rootDiv.innerHTML = "";
-    this._returnPage(this._routes[window.location.pathname])
-  };
+    this._returnPage(this._routes[window.location.pathname]);
+  }
 }
 
 const router = new Router();

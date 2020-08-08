@@ -1,28 +1,25 @@
 import SelectGrupoView from "../views/SelectGrupoView";
 import GrupoService from "../services/GrupoService";
-import GrupoView from "../views/GrupoView";
+import GrupoView from "../views/ListaGruposView";
 import Grupo from "../models/Grupo";
 class GrupoController {
   constructor() {
-    this._ulGrupos = document.querySelector(".ul-grupos");
-
-    this._grupoView = new GrupoView(this._ulGrupos);
     this._grupoService = new GrupoService();
-    this._init();
   }
 
-  _init() {
-    this._grupoService
-      .listar()
-      .then((listaGrupos) => this._grupoView.update(listaGrupos));
+  listar() {
+    return this._grupoService.listar().then((listaGrupos) => listaGrupos);
   }
 
   adicionar(form) {
     const grupo = this._createGrupo(form);
-    console.log(grupo);
+
     this._grupoService
       .adicionar(grupo)
-      .then((res) => { alert(res); navigation('/'); })
+      .then((res) => {
+        alert(res);
+        navigation("/");
+      })
       .catch((erro) => alert(erro));
   }
 

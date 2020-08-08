@@ -1,5 +1,4 @@
 import Tarefa from "../models/Tarefa.js";
-
 export default class TarefaDao {
   constructor(connection) {
     this._connection = connection;
@@ -29,8 +28,15 @@ export default class TarefaDao {
           let dado = atual.value;
           let key = atual.key;
           tarefas.push(
-            new Tarefa(dado._idGrupo, dado._dataFinal, dado._nome, key)
+            new Tarefa(
+              dado._idGrupo,
+              dado._dataFinal,
+              dado._nome,
+              key,
+              dado._color
+            )
           );
+
           atual.continue();
         } else {
           resolve(tarefas);

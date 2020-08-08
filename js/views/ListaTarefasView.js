@@ -6,6 +6,7 @@ export default class ListaTarefasView {
           (tarefa) => `
           <li>
             <input 
+                style="color: ${tarefa.color};"
                 type="checkbox" 
                 name="task" 
                 id="task-${tarefa._nome}" 

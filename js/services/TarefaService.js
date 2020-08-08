@@ -12,10 +12,11 @@ export default class TarefaService {
         tarefas.map(
           (tarefa) =>
             new Tarefa(
-              tarefa.idGrupo,
+              tarefa.grupo,
               tarefa.dataFinal,
               tarefa.nome,
-              tarefa.key
+              tarefa.key,
+              tarefa.color
             )
         )
       );

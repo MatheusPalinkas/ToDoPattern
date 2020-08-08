@@ -22,7 +22,7 @@ class GrupoController {
     console.log(grupo);
     this._grupoService
       .adicionar(grupo)
-      .then((res) => alert(res))
+      .then((res) => { alert(res); navigation('/'); })
       .catch((erro) => alert(erro));
   }
 

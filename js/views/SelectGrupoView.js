@@ -3,7 +3,10 @@ export default class SelectGrupoView {
     return `
       <select id="select-grupo">
       ${grupos
-        .map((grupo) => `<option value="${grupo.key}">${grupo.nome}</option>`)
+        .map(
+          (grupo) =>
+            `<option value="${grupo.key}" color="${grupo.color}">${grupo.nome}</option>`
+        )
         .join("")}
       </select>`;
   }

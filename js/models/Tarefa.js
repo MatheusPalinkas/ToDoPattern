@@ -1,9 +1,16 @@
 export default class Tarefa {
-  constructor(idGrupo, dataFinal = new Date(), nome, key = null) {
+  constructor(
+    idGrupo,
+    dataFinal = new Date(),
+    nome,
+    key = null,
+    color = "red"
+  ) {
     this._dataFinal = new Date(dataFinal.getTime());
     this._nome = nome;
     this._idGrupo = idGrupo;
     this._key = key;
+    this._color = color;
   }
 
   get nome() {
@@ -20,6 +27,10 @@ export default class Tarefa {
 
   get key() {
     return this._key;
+  }
+
+  get color() {
+    return this._color;
   }
 
   equals(tarefa) {

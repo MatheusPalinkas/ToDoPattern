@@ -11,17 +11,21 @@ class Router {
     this._rootDiv = document.querySelector("#root");
     this._asideFiltro = document.querySelector(".aside-filtros");
     this._routes = {
-      "/": ListaTarefasPageFactory.render,
+      "/": ListaTarefasPageFactory.closureRender(""),
+      "/hoje": ListaTarefasPageFactory.closureRender("Hoje"),
+      "/completas": ListaTarefasPageFactory.closureRender("Completas"),
       "/criar/tarefa": AddTarefaPageFactory.render,
       "/criar/grupo": AddGrupoPageFactory.render,
     };
+
+    window.closureRender = ListaTarefasPageFactory.closureRender;
 
     this._renderFiltros();
   }
 
   _renderFiltros() {
     FiltrosAside.render()
-      .then((pageContent) => (this._asideFiltro.innerHTML = pageContent))
+      .then((pageContent) => this._asideFiltro.appendChild(pageContent))
       .catch((erro) => {
         console.log(erro);
         this._asideFiltro.innerHTML = "";

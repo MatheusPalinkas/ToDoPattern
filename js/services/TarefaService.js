@@ -1,25 +1,23 @@
 import ConnectionFactory from "./ConnectionFactory.js";
+import DateHelper from "../helpers/DateHelper";
 import TarefaDao from "../dao/TarefaDao.js";
-import Tarefa from "../models/Tarefa.js";
 
 export default class TarefaService {
   constructor() {}
 
-  listar() {
+  listar(termo) {
     return this._getTarefaoDao()
       .then((dao) => dao.listar())
       .then((tarefas) =>
-        tarefas.map(
-          (tarefa) =>
-            new Tarefa(
-              tarefa.grupo,
-              tarefa.dataFinal,
-              tarefa.nome,
-              tarefa.key,
-              tarefa.color
-            )
-        )
+        tarefas.filter((tarefa) => this._filtroTarefas(tarefa, termo))
       );
+  }
+
+  _filtroTarefas(tarefa, termo = "") {
+    if (termo.toUpperCase() == "HOJE")
+      return DateHelper.equals(tarefa.dataFinal, new Date());
+
+    return true;
   }
 
   adicionar(tarefa) {

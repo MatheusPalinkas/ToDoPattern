@@ -24,9 +24,9 @@ class TarefaController {
       .catch((erro) => alert(erro));
   }
 
-  listar() {
+  listar(filtro) {
     return this._tarefaService
-      .listar()
+      .listar(filtro)
       .then((tarefas) => this._listaTarefasView.template(tarefas))
       .catch((erro) => {
         alert(erro);

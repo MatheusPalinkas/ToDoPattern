@@ -3,7 +3,7 @@ export default class Page {
     throw new Error("Essa classe não deve ser instanciada");
   }
 
-  static render() {
+  static render(params) {
     throw new Error("O método render deve ser sobrecarregado");
   }
 }

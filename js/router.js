@@ -1,7 +1,7 @@
-import ListaTarefasPageFactory from "./components/ListaTarefasPage";
-import AddTarefaPageFactory from "./components/AddTarefaPage";
-import AddGrupoPageFactory from "./components/AddGrupoPage";
-import FiltrosAside from "./components/FiltrosAside";
+import ListaTarefasPageFactory from "./pages/ListaTarefasPage";
+import AddTarefaPageFactory from "./pages/AddTarefaPage";
+import AddGrupoPageFactory from "./pages/AddGrupoPage";
+import FiltrosAside from "./pages/FiltrosAside";
 
 import "../css/styles.css";
 import "../css/add.css";
@@ -19,14 +19,15 @@ class Router {
       "/criar-grupo": AddGrupoPageFactory.render,
     };
 
-    window.closureRender = ListaTarefasPageFactory.closureRender;
-
     this._renderFiltros();
   }
 
   _renderFiltros() {
     FiltrosAside.render()
-      .then((pageContent) => this._asideFiltro.appendChild(pageContent))
+      .then((pageContent) => {
+        this._asideFiltro.innerHTML = "";
+        this._asideFiltro.appendChild(pageContent);
+      })
       .catch((erro) => {
         console.log(erro);
         this._asideFiltro.innerHTML = "";
@@ -49,6 +50,7 @@ class Router {
     window.history.pushState({}, resource, window.location.origin + pathname);
     this._rootDiv.innerHTML = "";
     this._returnPage(this._routes[resource], param);
+    this._renderFiltros();
   }
 
   undoNavigation() {

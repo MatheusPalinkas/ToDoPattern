@@ -72,6 +72,7 @@ export default class TarefaDao {
       };
     });
   }
+
   _getStore() {
     return this._connection
       .transaction([this._store], "readwrite")

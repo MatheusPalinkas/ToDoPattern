@@ -3,6 +3,15 @@ import ListaGruposView from "../views/ListaGruposView";
 import navigation from "../router";
 
 export default class FiltrosAside {
+  static render(params = null) {
+    return getInstanceGrupo()
+      .listar()
+      .then((grupos) => new ListaGruposView().template(grupos))
+      .then((listaGrupos) => FiltrosAside._listarGrupos(listaGrupos))
+      .then((filtos) => FiltrosAside._createUlMain(filtos))
+      .catch((erro) => FiltrosAside._listarGrupos(""));
+  }
+
   static _listarGrupos(listaGrupos) {
     return `
         <li value="">
@@ -45,14 +54,5 @@ export default class FiltrosAside {
       }
     });
     return ul;
-  }
-
-  static render() {
-    return getInstanceGrupo()
-      .listar()
-      .then((grupos) => new ListaGruposView().template(grupos))
-      .then((listaGrupos) => FiltrosAside._listarGrupos(listaGrupos))
-      .then((filtos) => FiltrosAside._createUlMain(filtos))
-      .catch((erro) => FiltrosAside._listarGrupos(""));
   }
 }

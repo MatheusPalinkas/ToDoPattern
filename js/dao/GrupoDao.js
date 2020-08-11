@@ -51,6 +51,7 @@ export default class GrupoDao {
       };
     });
   }
+
   _getStore() {
     return this._connection
       .transaction([this._store], "readwrite")

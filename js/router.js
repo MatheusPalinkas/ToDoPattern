@@ -14,6 +14,7 @@ class Router {
       "/": ListaTarefasPageFactory.closureRender(""),
       "/hoje": ListaTarefasPageFactory.closureRender("Hoje"),
       "/completos": ListaTarefasPageFactory.closureRender("Completos"),
+      "/grupo": ListaTarefasPageFactory.closureRender("Grupos"),
       "/criar/tarefa": AddTarefaPageFactory.render,
       "/criar/grupo": AddGrupoPageFactory.render,
     };
@@ -42,6 +43,9 @@ class Router {
   }
 
   navigation(pathname) {
+    const resource = pathname;
+    console.log(pathname.indexOf("/"));
+    console.log();
     window.history.pushState({}, pathname, window.location.origin + pathname);
     this._rootDiv.innerHTML = "";
     this._returnPage(this._routes[window.location.pathname]);

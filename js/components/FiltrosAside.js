@@ -30,7 +30,14 @@ export default class FiltrosAside {
     const ul = document.createElement("ul");
     ul.classList.add("ul-filtros");
     ul.innerHTML = content;
+
     ul.addEventListener("click", (e) => {
+      if (e.target.id.match(/grupo/) !== null) {
+        const idGrupo = e.target.id.replace(/grupo-/, "");
+        navigation(`/grupo/${idGrupo}`);
+        return;
+      }
+
       if (e.target.nodeName == "LI") {
         const filtro = e.target.getAttribute("value").toLowerCase();
         navigation(`/${filtro}`);

@@ -1,15 +1,20 @@
 export default class ListaGruposView {
   template(grupos) {
-    return `<ul class="ul-grupos">${
+    const lis =
       grupos
         .map(
           (grupo) => `
-          <li style="color: ${grupo._color};">           
-            <span>${grupo._nome}</span>
+          <li id="grupo-${grupo.key}" style="color: ${grupo._color};">           
+            <span id="grupo-${grupo.key}">${grupo._nome}</span>
           </li>`
         )
-        .join("") + this._linkAddGrupo()
-    }</ul>`;
+        .join("") + this._linkAddGrupo();
+
+    const ul = document.createElement("ul");
+    ul.innerHTML = lis;
+    ul.classList.add("ul-grupos");
+
+    return ul.outerHTML;
   }
 
   _linkAddGrupo() {

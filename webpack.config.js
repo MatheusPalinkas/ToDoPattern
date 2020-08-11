@@ -37,7 +37,7 @@ const rules = [
     use: ["html-loader"],
   },
   {
-    test: /\.(png|jpe?g|gif)$/i,
+    test: /\.png$/,
     use: {
       loader: "file-loader",
       options: {

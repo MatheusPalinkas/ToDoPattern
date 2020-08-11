@@ -2,6 +2,8 @@
 
 Projeto de um gerenciador de tarefas (To-do) feito em js vanila, utilizando arquitetura MVC e Design Patterns. Afim de práticar os conteúdos aprendidos nos cursos de JavaScript da [formação React](https://cursos.alura.com.br/formacao-react-js) da Alura
 
+[Link para deploy na vercel](https://to-do-pattern.vercel.app/)
+
 ---
 
 ## :computer: Passo a passo
@@ -40,6 +42,7 @@ yarn build
 
 - JavaScript Vanila MVC
 - Arquitetura MVC
+- Design Patterns (Singleton, Proxy, ...)
 - SPA
 - Webpack
 - Closure

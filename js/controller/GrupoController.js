@@ -1,7 +1,8 @@
+import ProxyNavigation from "../services/ProxyNavigation";
 import SelectGrupoView from "../views/SelectGrupoView";
 import GrupoService from "../services/GrupoService";
-import GrupoView from "../views/ListaGruposView";
 import Grupo from "../models/Grupo";
+
 class GrupoController {
   constructor() {
     this._grupoService = new GrupoService();
@@ -14,13 +15,7 @@ class GrupoController {
   adicionar(form) {
     const grupo = this._createGrupo(form);
 
-    this._grupoService
-      .adicionar(grupo)
-      .then((res) => {
-        alert(res);
-        navigation("/");
-      })
-      .catch((erro) => alert(erro));
+    this._grupoService.adicionar(grupo).catch((erro) => alert(erro));
   }
 
   selectGrupos() {
@@ -40,5 +35,5 @@ class GrupoController {
 let grupoController = new GrupoController();
 
 export default function getInstanceGrupo() {
-  return grupoController;
+  return ProxyNavigation.createProxy(grupoController, ["adicionar"]);
 }

@@ -1,3 +1,4 @@
+import ProxyNavigation from "../services/ProxyNavigation";
 import ListaTarefasView from "../views/ListaTarefasView";
 import TarefaService from "../services/TarefaService";
 import DateHelper from "../helpers/DateHelper";
@@ -5,21 +6,13 @@ import Tarefa from "../models/Tarefa";
 
 class TarefaController {
   constructor() {
-    this._ulTarefas = document.querySelector(".ul-tarefas");
-
     this._tarefaService = new TarefaService();
     this._listaTarefasView = new ListaTarefasView();
-
-    this.listar();
   }
 
   completarTarefa(id, tarefa) {
     this._tarefaService
       .completarTarefa(id, tarefa)
-      .then((res) => {
-        alert(res);
-        navigation("/");
-      })
       .catch((erro) => alert(erro));
   }
 
@@ -27,10 +20,7 @@ class TarefaController {
     const tarefa = this._createTarefa(form);
     this._tarefaService
       .adicionar(tarefa)
-      .then((res) => {
-        alert(res);
-        navigation("/");
-      })
+      .then((res) => alert(res))
       .catch((erro) => alert(erro));
   }
 
@@ -61,5 +51,8 @@ class TarefaController {
 let tarefaController = new TarefaController();
 
 export default function getInstanceTarefa() {
-  return tarefaController;
+  return ProxyNavigation.createProxy(tarefaController, [
+    "adicionar",
+    "completarTarefa",
+  ]);
 }

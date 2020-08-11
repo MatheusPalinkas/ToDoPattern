@@ -17,7 +17,18 @@ export default class TarefaService {
     if (termo.toUpperCase() == "HOJE")
       return DateHelper.equals(tarefa.dataFinal, new Date());
 
+    if (termo.toUpperCase() == "COMPLETOS") return tarefa.completa == true;
+
     return true;
+  }
+
+  completarTarefa(idTarefa, tarefa) {
+    return this._getTarefaoDao()
+      .then((dao) => dao.atualiza(idTarefa, tarefa))
+      .catch((erro) => {
+        console.log(erro);
+        return "Não foi possivel adicionar uma tarefa";
+      });
   }
 
   adicionar(tarefa) {

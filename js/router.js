@@ -13,7 +13,7 @@ class Router {
     this._routes = {
       "/": ListaTarefasPageFactory.closureRender(""),
       "/hoje": ListaTarefasPageFactory.closureRender("Hoje"),
-      "/completas": ListaTarefasPageFactory.closureRender("Completas"),
+      "/completos": ListaTarefasPageFactory.closureRender("Completos"),
       "/criar/tarefa": AddTarefaPageFactory.render,
       "/criar/grupo": AddGrupoPageFactory.render,
     };

@@ -1,22 +1,29 @@
+import DateHelper from "../helpers/DateHelper";
+
 export default class ListaTarefasView {
   template(tarefas) {
     return (
-      tarefas
-        .map(
-          (tarefa) => `
-          <li>
-            <input 
-                style="color: ${tarefa.color};"
-                type="checkbox" 
-                name="task" 
-                id="task-${tarefa._nome}" 
-                value="${tarefa._nome}">
-            <label for="task-${tarefa._nome}">${tarefa._nome}</label>
-          </li>
-        `
-        )
-        .join("") + this._linkAddTarefa()
+      tarefas.map((tarefa) => this._createLiTarefa(tarefa)).join("") +
+      this._linkAddTarefa()
     );
+  }
+
+  _createLiTarefa(tarefa) {
+    const li = document.createElement("li");
+
+    li.innerHTML = `
+    <input 
+      style="color: ${tarefa.color};"
+      type="checkbox" 
+      name="task" 
+      id="task-${tarefa.key}" 
+      value="${tarefa.nome}"
+      ${tarefa.completa ? "checked" : ""}
+      _idGrupo="${tarefa.idGrupo}"
+      _dataFinal="${DateHelper.dataParaTexto(tarefa.dataFinal)}"
+    >
+    <label for="task-${tarefa.key}">${tarefa.nome}</label>`;
+    return li.outerHTML;
   }
 
   _linkAddTarefa() {

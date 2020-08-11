@@ -4,13 +4,15 @@ export default class Tarefa {
     dataFinal = new Date(),
     nome,
     key = null,
-    color = "red"
+    color = "red",
+    completa = false
   ) {
     this._dataFinal = new Date(dataFinal.getTime());
     this._nome = nome;
     this._idGrupo = idGrupo;
     this._key = key;
     this._color = color;
+    this._completa = completa;
   }
 
   get nome() {
@@ -31,6 +33,14 @@ export default class Tarefa {
 
   get color() {
     return this._color;
+  }
+
+  get completa() {
+    return this._completa;
+  }
+
+  set completa(value) {
+    this._completa = value;
   }
 
   equals(tarefa) {

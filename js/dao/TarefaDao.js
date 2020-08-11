@@ -5,6 +5,18 @@ export default class TarefaDao {
     this._store = "tarefas";
   }
 
+  atualiza(id, tarefa) {
+    return new Promise((resolve, reject) => {
+      let request = this._getStore().put(tarefa, id);
+
+      request.onsuccess = (e) => resolve("Tarefa atualizada com sucesso");
+      request.onerror = (e) => {
+        console.log(e.target.error);
+        reject("Erro ao adicionar tarefa");
+      };
+    });
+  }
+
   adiciona(tarefa) {
     return new Promise((resolve, reject) => {
       let request = this._getStore().add(tarefa);
@@ -33,7 +45,8 @@ export default class TarefaDao {
               dado._dataFinal,
               dado._nome,
               key,
-              dado._color
+              dado._color,
+              dado._completa
             )
           );
 

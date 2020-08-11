@@ -13,6 +13,16 @@ class TarefaController {
     this.listar();
   }
 
+  completarTarefa(id, tarefa) {
+    this._tarefaService
+      .completarTarefa(id, tarefa)
+      .then((res) => {
+        alert(res);
+        navigation("/");
+      })
+      .catch((erro) => alert(erro));
+  }
+
   adicionar(form) {
     const tarefa = this._createTarefa(form);
     this._tarefaService
@@ -42,7 +52,8 @@ class TarefaController {
       DateHelper.textoParaData(getElement("#date-tarefa").value),
       getElement("#nome-tarefa").value,
       null,
-      getElement("option:checked").getAttribute("color")
+      getElement("option:checked").getAttribute("color"),
+      false
     );
   }
 }

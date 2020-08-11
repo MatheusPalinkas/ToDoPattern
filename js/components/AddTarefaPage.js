@@ -5,7 +5,7 @@ import getInstanceTarefa from "../controller/TarefaController";
 const grupoController = getInstanceGrupo();
 const tarefaController = getInstanceTarefa();
 export default class AddTarefaPage extends Page {
-  static render() {
+  static render(params) {
     return grupoController
       .selectGrupos()
       .then((selectGrupos) => AddTarefaPage._createFormTarefa(selectGrupos))

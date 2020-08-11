@@ -29,8 +29,8 @@ export default class ListaTarefasView {
   _linkAddTarefa() {
     return `
       <li class="add-Tarefa">
-        <a class="add-grupo" style="padding-left: 0" onclick="navigation('/criar/tarefa')">
-          <img src="./img/mais.png">
+        <a class="add-grupo" style="padding-left: 0" onclick="navigation('/criar-tarefa')">
+          <img src="../img/mais.png">
           Adicionar nova tarefa
         </a>
       </li>

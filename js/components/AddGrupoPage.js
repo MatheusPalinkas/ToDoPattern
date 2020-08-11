@@ -2,7 +2,7 @@ import Page from "./Page";
 import getInstanceGrupo from "../controller/GrupoController";
 
 export default class AddGrupoPage extends Page {
-  static render() {
+  static render(params) {
     return new Promise((resolve, reject) => {
       const divContent = document.createElement("div");
       divContent.innerHTML = `

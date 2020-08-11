@@ -4,11 +4,11 @@ import getInstanceTarefa from "../controller/TarefaController";
 
 export default class ListaTarefasPage extends Page {
   static closureRender(filtro) {
-    return () => {
+    return (params) => {
       return getInstanceTarefa()
-        .listar(filtro)
+        .listar(filtro, params)
         .then((lisTarefas) => ListaTarefasPage._createUlTarefa(lisTarefas))
-        .then((tarefas) => ListaTarefasPage._createTarefas(tarefas))
+        .then((tarefas) => ListaTarefasPage._createTarefas(tarefas, filtro))
         .catch((erro) => ListaTarefasPage._createTarefas(""));
     };
   }
@@ -17,6 +17,7 @@ export default class ListaTarefasPage extends Page {
     const ul = document.createElement("ul");
     ul.classList.add("ul-tarefas");
     ul.innerHTML = content;
+
     ul.addEventListener("click", (e) => {
       if (e.target.nodeName === "INPUT") {
         const tarefa = ListaTarefasPage._createTarefaByTarget(e.target);
@@ -42,10 +43,10 @@ export default class ListaTarefasPage extends Page {
     );
   }
 
-  static _createTarefas(tarefas) {
+  static _createTarefas(tarefas, filtro) {
     const divContent = document.createElement("div");
     divContent.innerHTML = `
-      <h1 id="cabecalho">Hoje</h1>
+      <h1 id="cabecalho">${filtro || "Todas"}</h1>
     `;
     divContent.appendChild(tarefas);
 

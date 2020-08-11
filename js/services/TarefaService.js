@@ -5,19 +5,21 @@ import TarefaDao from "../dao/TarefaDao.js";
 export default class TarefaService {
   constructor() {}
 
-  listar(termo) {
+  listar(termo, param) {
     return this._getTarefaoDao()
       .then((dao) => dao.listar())
       .then((tarefas) =>
-        tarefas.filter((tarefa) => this._filtroTarefas(tarefa, termo))
+        tarefas.filter((tarefa) => this._filtroTarefas(tarefa, termo, param))
       );
   }
 
-  _filtroTarefas(tarefa, termo = "") {
+  _filtroTarefas(tarefa, termo = "", param = null) {
     if (termo.toUpperCase() == "HOJE")
       return DateHelper.equals(tarefa.dataFinal, new Date());
 
     if (termo.toUpperCase() == "COMPLETOS") return tarefa.completa == true;
+
+    if (termo.toUpperCase() == "GRUPOS") return tarefa.idGrupo == param;
 
     return true;
   }

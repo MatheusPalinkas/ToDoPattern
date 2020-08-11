@@ -20,7 +20,7 @@ export default class ListaGruposView {
   _linkAddGrupo() {
     return `
       <li class="li-add-grupo">
-        <a class="add-grupo" onclick="navigation('/criar/grupo')">
+        <a class="add-grupo" onclick="navigation('/criar-grupo')">
           Novo grupo
         </a>
       </li>

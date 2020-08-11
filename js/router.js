@@ -15,8 +15,8 @@ class Router {
       "/hoje": ListaTarefasPageFactory.closureRender("Hoje"),
       "/completos": ListaTarefasPageFactory.closureRender("Completos"),
       "/grupo": ListaTarefasPageFactory.closureRender("Grupos"),
-      "/criar/tarefa": AddTarefaPageFactory.render,
-      "/criar/grupo": AddGrupoPageFactory.render,
+      "/criar-tarefa": AddTarefaPageFactory.render,
+      "/criar-grupo": AddGrupoPageFactory.render,
     };
 
     window.closureRender = ListaTarefasPageFactory.closureRender;
@@ -33,8 +33,8 @@ class Router {
       });
   }
 
-  _returnPage(func) {
-    func()
+  _returnPage(func, params) {
+    func(params)
       .then((pageContent) => this._rootDiv.appendChild(pageContent))
       .catch((erro) => {
         console.log(erro);
@@ -43,12 +43,12 @@ class Router {
   }
 
   navigation(pathname) {
-    const resource = pathname;
-    console.log(pathname.indexOf("/"));
-    console.log();
-    window.history.pushState({}, pathname, window.location.origin + pathname);
+    const resource = `/${pathname.split("/")[1]}`;
+    const param = pathname.split("/")[2];
+
+    window.history.pushState({}, resource, window.location.origin + pathname);
     this._rootDiv.innerHTML = "";
-    this._returnPage(this._routes[window.location.pathname]);
+    this._returnPage(this._routes[resource], param);
   }
 
   undoNavigation() {

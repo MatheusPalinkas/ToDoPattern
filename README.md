@@ -43,6 +43,7 @@ yarn build
 - JavaScript Vanila MVC
 - Arquitetura MVC
 - Design Patterns (Singleton, Proxy, ...)
+- IndexedDB
 - SPA
 - Webpack
 - Closure

@@ -19,9 +19,10 @@ export default class AddTarefaPage extends Page {
   static _createFormTarefa(selectGrupos) {
     const divContent = document.createElement("div");
 
-    divContent.innerHTML = AddGrupoPage._contentDiv(selectGrupos);
+    divContent.innerHTML = AddTarefaPage._contentDiv(selectGrupos);
 
     const form = divContent.querySelector(".form-tarefa");
+
     form.addEventListener("submit", (e) => {
       e.preventDefault();
       tarefaController.adicionar(form);

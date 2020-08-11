@@ -1,6 +1,7 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const optimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
 const plugins = [
   new HtmlWebpackPlugin({
@@ -16,6 +17,15 @@ const plugins = [
   new MiniCssExtractPlugin({
     filename: "styles.css",
     chunkFilename: "[id].css",
+  }),
+  new optimizeCSSAssetsPlugin({
+    cssProcessor: require("cssnano"),
+    cssProcessorOptions: {
+      discardComments: {
+        removeAll: true,
+      },
+    },
+    canPrint: true,
   }),
 ];
 
@@ -43,6 +53,13 @@ const rules = [
       options: {
         name: "[path][name].[ext]",
       },
+    },
+  },
+  {
+    use: /\.js$/,
+    exclude: /(node_modules|.(|png|css))/,
+    use: {
+      loader: "babel-loader",
     },
   },
 ];

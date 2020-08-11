@@ -16,9 +16,23 @@
       <a onClick="navigation('/')">
         <h2>ToDo Pattern</h2>
       </a>
+      <div class="hamburguer">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
     </header>
 
     <aside class="aside-filtros"></aside>
     <main id="root"></main>
+
+    <script>
+      const divHamburguer = document.querySelector("div.hamburguer");
+
+      divHamburguer.addEventListener("click", (e) => {
+        const aside = document.querySelector(".aside-filtros");
+        aside.style.display = aside.style.display === "none" ? "block" : "none";
+      });
+    </script>
   </body>
 </html>
